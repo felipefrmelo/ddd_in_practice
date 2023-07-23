@@ -1,11 +1,11 @@
-from ddd_in_practice.domain.slot import Slot
-from ddd_in_practice.domain.snack import Snack
-from ddd_in_practice.domain.snack_pile import SnackPile
-from ddd_in_practice.domain.wallet import Wallet
+from snack_machine.domain.slot import Slot
+from snack_machine.domain.snack import Snack
+from snack_machine.domain.snack_pile import SnackPile
+from snack_machine.domain.wallet import Wallet
 from abc import ABC, abstractmethod
-from ddd_in_practice.domain.money import Cent, Dollar, FiveDollar, Money, Quarter, TenCent, TwentyDollar
+from snack_machine.domain.money import Cent, Dollar, FiveDollar, Money, Quarter, TenCent, TwentyDollar
 
-from ddd_in_practice.domain.snack_machine import SnackMachine
+from snack_machine.domain.snack_machine import SnackMachine
 
 from sqlalchemy.orm import Session, sessionmaker, declarative_base, Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey, create_engine, select

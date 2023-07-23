@@ -1,5 +1,5 @@
-from ddd_in_practice.domain.snack import Snack, Chocolate, Gum, Soda
-from ddd_in_practice.infra.repository import SnackOrm, SqlAlchemySnackMachineRepository, SessionLocal
+from snack_machine.domain.snack import Snack, Chocolate, Gum, Soda
+from snack_machine.infra.repository import SnackOrm, SqlAlchemySnackMachineRepository, SessionLocal
 import pytest
 
 

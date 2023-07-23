@@ -1,7 +1,7 @@
-from ddd_in_practice.domain.snack import Chocolate
-from ddd_in_practice.domain.snack_pile import SnackPile
-from ddd_in_practice.ui.snack_machine_view_model import SnackMachineViewModel
-import ddd_in_practice.ui.commands as Commands
+from snack_machine.domain.snack import Chocolate
+from snack_machine.domain.snack_pile import SnackPile
+from snack_machine.ui.snack_machine_view_model import SnackMachineViewModel
+import snack_machine.ui.commands as Commands
 import pytest
 
 

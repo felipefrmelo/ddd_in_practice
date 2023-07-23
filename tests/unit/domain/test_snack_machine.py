@@ -1,9 +1,9 @@
 import pytest
-from ddd_in_practice.domain.snack_machine import SnackMachine
-from ddd_in_practice.domain.money import Cent, Dollar, FiveDollar, TenCent, Quarter, TwentyDollar
-from ddd_in_practice.domain.snack_pile import SnackPile
-from ddd_in_practice.domain.wallet import Wallet
-from ddd_in_practice.domain.snack import *
+from snack_machine.domain.snack_machine import SnackMachine
+from snack_machine.domain.money import Cent, Dollar, FiveDollar, TenCent, Quarter, TwentyDollar
+from snack_machine.domain.snack_pile import SnackPile
+from snack_machine.domain.wallet import Wallet
+from snack_machine.domain.snack import *
 
 
 def test_initial_values():

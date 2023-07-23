@@ -1,8 +1,8 @@
-from ddd_in_practice.domain.money import Dollar, TwentyDollar
-from ddd_in_practice.domain.snack import Chocolate, Gum, Soda
-from ddd_in_practice.domain.snack_pile import SnackPile
-from ddd_in_practice.domain.wallet import Wallet
-from ddd_in_practice.infra.repository import SnackMachineRepository
+from snack_machine.domain.money import Dollar, TwentyDollar
+from snack_machine.domain.snack import Chocolate, Gum, Soda
+from snack_machine.domain.snack_pile import SnackPile
+from snack_machine.domain.wallet import Wallet
+from snack_machine.infra.repository import SnackMachineRepository
 
 
 def test_repository_can_save_a_snack_machine(repository: SnackMachineRepository):

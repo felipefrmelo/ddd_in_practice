@@ -1,8 +1,8 @@
 
 test:
-	poetry run pytest --cov-report term-missing  --cov ddd_in_practice
+	poetry run pytest --cov-report term-missing  --cov snack_machine
 
 
 run:
-	poetry run python ddd_in_practice/ui/view.py
+	poetry run python snack_machine/ui/view.py
 

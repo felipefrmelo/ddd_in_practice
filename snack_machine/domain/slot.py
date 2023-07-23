@@ -1,6 +1,6 @@
 
 
-from ddd_in_practice.domain.snack_pile import SnackPile
+from snack_machine.domain.snack_pile import SnackPile
 
 
 class Slot:

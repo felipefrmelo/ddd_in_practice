@@ -1,6 +1,6 @@
 
 
-from ddd_in_practice.domain.snack import Snack
+from snack_machine.domain.snack import Snack
 
 
 class SnackPile:

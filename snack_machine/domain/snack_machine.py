@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from ddd_in_practice.domain.money import Money
-from ddd_in_practice.domain.slot import Slot
-from ddd_in_practice.domain.snack_pile import SnackPile
-from ddd_in_practice.domain.wallet import Wallet
+from snack_machine.domain.money import Money
+from snack_machine.domain.slot import Slot
+from snack_machine.domain.snack_pile import SnackPile
+from snack_machine.domain.wallet import Wallet
 
 
 class EntityID:

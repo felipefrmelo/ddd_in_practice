@@ -2,12 +2,12 @@ import re
 import tkinter as tk
 from tkinter import messagebox
 from PIL import ImageTk, Image
-from ddd_in_practice.domain.snack import Chocolate, Gum, Soda
-from ddd_in_practice.domain.snack_pile import SnackPile
+from snack_machine.domain.snack import Chocolate, Gum, Soda
+from snack_machine.domain.snack_pile import SnackPile
 
-from ddd_in_practice.infra.repository import SessionLocal, SnackOrm, SqlAlchemySnackMachineRepository
-from ddd_in_practice.ui.snack_machine_view_model import SnackMachineViewModel
-import ddd_in_practice.ui.commands as Commands
+from snack_machine.infra.repository import SessionLocal, SnackOrm, SqlAlchemySnackMachineRepository
+from snack_machine.ui.snack_machine_view_model import SnackMachineViewModel
+import snack_machine.ui.commands as Commands
 
 import locale
 
@@ -39,7 +39,7 @@ class SnackMachineApp(tk.Tk):
 
     def render_slot(self):
         slots = self.snack_machine_view_model.slots
-        path = "ddd_in_practice/ui/Images/"
+        path = "snack_machine/ui/Images/"
         self.slots_images = {
             slot: self.load_resized_image(f"{path}{slot.snack_name}.png") for slot in slots
         }
@@ -101,15 +101,10 @@ class SnackMachineApp(tk.Tk):
             self, text=f"Money Inside: {self.snack_machine_view_model.money_inside}")
         self.money_inside_label.grid(row=7, column=1, pady=10)
 
-    def render_error_message(self):
-        self.error_message_label = tk.Label(
-            self, text=",".join(self.snack_machine_view_model.error_message), fg="red")
-        self.error_message_label.grid(row=8, column=1, pady=10)
-
     def render_notes_labels(self):
         self.notes_labels = {}
         notes = ['1c',  '10c',  '25c', '1d', '5d', '20d']
-        path = "ddd_in_practice/ui/Images/"
+        path = "snack_machine/ui/Images/"
         self.notes_images = {
             k: self.load_resized_image(f"{path}{k}.png") for k in notes
         }

@@ -1,4 +1,4 @@
-from ddd_in_practice.domain.money import *
+from snack_machine.domain.money import *
 
 
 class Wallet:

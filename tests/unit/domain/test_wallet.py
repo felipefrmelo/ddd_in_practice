@@ -1,6 +1,6 @@
 import pytest
-from ddd_in_practice.domain.money import Dollar, Cent, TenCent, Quarter, FiveDollar, TwentyDollar
-from ddd_in_practice.domain.wallet import Wallet
+from snack_machine.domain.money import Dollar, Cent, TenCent, Quarter, FiveDollar, TwentyDollar
+from snack_machine.domain.wallet import Wallet
 
 
 def test_initial_values():

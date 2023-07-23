@@ -1,7 +1,7 @@
-from ddd_in_practice.domain.snack_machine import SnackMachine
-from ddd_in_practice.infra.repository import SnackMachineRepository
-from ddd_in_practice.ui.commands import InsertMoney
-import ddd_in_practice.ui.commands as Commands
+from snack_machine.domain.snack_machine import SnackMachine
+from snack_machine.infra.repository import SnackMachineRepository
+from snack_machine.ui.commands import InsertMoney
+import snack_machine.ui.commands as Commands
 import locale
 
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
