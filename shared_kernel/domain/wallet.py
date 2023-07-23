@@ -1,4 +1,4 @@
-from snack_machine.domain.money import *
+from shared_kernel.domain.money import *
 
 
 class Wallet:

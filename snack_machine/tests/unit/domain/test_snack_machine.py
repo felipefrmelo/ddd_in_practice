@@ -1,8 +1,8 @@
 import pytest
 from snack_machine.domain.snack_machine import SnackMachine
-from snack_machine.domain.money import Cent, Dollar, FiveDollar, TenCent, Quarter, TwentyDollar
+from shared_kernel.domain.money import Cent, Dollar, FiveDollar, TenCent, Quarter, TwentyDollar
 from snack_machine.domain.snack_pile import SnackPile
-from snack_machine.domain.wallet import Wallet
+from shared_kernel.domain.wallet import Wallet
 from snack_machine.domain.snack import *
 
 

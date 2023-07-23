@@ -1,6 +1,6 @@
 
 from dataclasses import dataclass, field
-from snack_machine.domain.money import Money, Cent, TenCent, Dollar, FiveDollar, TwentyDollar, Quarter
+from shared_kernel.domain.money import Money, Cent, TenCent, Dollar, FiveDollar, TwentyDollar, Quarter
 
 
 @dataclass(unsafe_hash=True)

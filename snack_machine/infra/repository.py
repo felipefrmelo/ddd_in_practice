@@ -1,9 +1,9 @@
 from snack_machine.domain.slot import Slot
 from snack_machine.domain.snack import Snack
 from snack_machine.domain.snack_pile import SnackPile
-from snack_machine.domain.wallet import Wallet
+from shared_kernel.domain.wallet import Wallet
 from abc import ABC, abstractmethod
-from snack_machine.domain.money import Cent, Dollar, FiveDollar, Money, Quarter, TenCent, TwentyDollar
+from shared_kernel.domain.money import Cent, Dollar, FiveDollar, Money, Quarter, TenCent, TwentyDollar
 
 from snack_machine.domain.snack_machine import SnackMachine
 

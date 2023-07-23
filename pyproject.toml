@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Felipe <felipe.melo@luizalabs.com>"]
 readme = "README.md"
-packages = [{include = "snack_machine"}]
+packages = [{include = "snack_machine"}, {include = "shared_kernel"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

@@ -1,7 +1,7 @@
-from snack_machine.domain.money import Dollar, TwentyDollar
+from shared_kernel.domain.money import Dollar, TwentyDollar
 from snack_machine.domain.snack import Chocolate, Gum, Soda
 from snack_machine.domain.snack_pile import SnackPile
-from snack_machine.domain.wallet import Wallet
+from shared_kernel.domain.wallet import Wallet
 from snack_machine.infra.repository import SnackMachineRepository
 
 

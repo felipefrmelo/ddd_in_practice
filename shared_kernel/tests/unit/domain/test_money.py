@@ -1,4 +1,4 @@
-from snack_machine.domain.money import Cent, TenCent, Quarter, Dollar, FiveDollar, TwentyDollar
+from shared_kernel.domain.money import Cent, TenCent, Quarter, Dollar, FiveDollar, TwentyDollar
 import pytest
 
 
