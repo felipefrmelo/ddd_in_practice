@@ -1,6 +1,5 @@
 from snack_machine.domain.snack_machine import SnackMachine
 from snack_machine.infra.repository import SnackMachineRepository
-from snack_machine.ui.commands import InsertMoney
 import snack_machine.ui.commands as Commands
 import locale
 
@@ -13,7 +12,7 @@ class SnackMachineViewModel:
         self.snack_machine = snack_machine
         self.repository = repository
 
-    def insert_money(self, command: InsertMoney):
+    def insert_money(self, command: Commands.InsertMoney):
         self.snack_machine.insert_money(command.value)
 
     def buy_snack(self, command: Commands.BuySnack):
