@@ -8,6 +8,7 @@ from atm.ui.atm_view_model import AtmViewModel
 import atm.ui.commands as Commands
 
 import locale
+from common import RabbitMQPublisher
 from shared_kernel.domain.money import *
 
 from shared_kernel.domain.wallet import Wallet
@@ -136,8 +137,10 @@ db_url = "sqlite:///atm.db"
 
 if __name__ == "__main__":
 
+    pub = RabbitMQPublisher("localhost")
+
     session = SessionLocal(db_url)
-    repository = SqlAlchemyAtmRepository(session)
+    repository = SqlAlchemyAtmRepository(session, pub)
 
     atm = get_atm(repository)
 

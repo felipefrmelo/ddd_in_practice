@@ -4,12 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["Felipe <felipe.melo@luizalabs.com>"]
 readme = "README.md"
-packages = [{include = "snack_machine"}, {include = "shared_kernel"}]
+packages = [{include = "snack_machine"}, {include = "shared_kernel"}, {include= "management"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 pillow = "^10.0.0"
 sqlalchemy = "^2.0.19"
+pika = "^1.3.2"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -1,5 +1,5 @@
 import pytest
-from atm.domain.atm import Atm
+from atm.domain.atm import Atm, BalanceChangedEvent
 from shared_kernel.domain.money import Cent, TenCent, Dollar
 from shared_kernel.domain.wallet import Wallet
 
@@ -81,3 +81,15 @@ def test_take_money_with_invalid_amount(amount, expected):
         atm.take_money(amount)
 
     assert str(excinfo.value) == expected
+
+
+def test_take_money_should_raise_a_event():
+    atm = Atm()
+
+    atm.load_money(Wallet(Dollar(1)))
+
+    atm.take_money(1)
+
+    assert len(atm.domain_events) == 1
+    assert isinstance(atm.domain_events[0], BalanceChangedEvent)
+    assert atm.domain_events[0].value == 1.01

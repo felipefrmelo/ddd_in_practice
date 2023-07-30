@@ -1,4 +1,5 @@
 from atm.domain.atm import Atm
+from common import Publisher
 from shared_kernel.domain.wallet import Wallet
 from abc import ABC, abstractmethod
 from shared_kernel.domain.money import Cent, Dollar, FiveDollar, Money, Quarter, TenCent, TwentyDollar
@@ -9,6 +10,9 @@ from sqlalchemy import create_engine, select
 
 class AtmRepository(ABC):
 
+    def __init__(self, pub: Publisher):
+        self.pub = pub
+
     @abstractmethod
     def create(self):
         ...
@@ -17,9 +21,15 @@ class AtmRepository(ABC):
     def find_by_id(self, id) -> Atm:
         ...
 
-    @abstractmethod
     def save(self, atm: Atm):
-        ...
+        self._save(atm)
+        while atm.domain_events:
+            event = atm.domain_events.pop()
+            self.pub.publish(event.name, event)
+
+    @abstractmethod
+    def _save(self, atm: Atm):
+        raise NotImplementedError
 
 
 Base = declarative_base()
@@ -72,7 +82,8 @@ class AtmOrm(Base):
 
 class SqlAlchemyAtmRepository(AtmRepository):
 
-    def __init__(self, session: Session):
+    def __init__(self, session: Session, pub: Publisher):
+        super().__init__(pub)
         self.session = session
 
     def create(self):
@@ -87,7 +98,7 @@ class SqlAlchemyAtmRepository(AtmRepository):
 
         return next((s.to_domain() for s in atms), None)
 
-    def save(self, atm: Atm):
+    def _save(self, atm: Atm):
         stmt = select(AtmOrm).where(
             AtmOrm.id == atm.id)
         atm_orm = self.session.scalars(stmt).one()

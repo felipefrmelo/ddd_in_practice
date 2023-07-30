@@ -1,24 +1,18 @@
 from dataclasses import dataclass
-from shared_kernel.domain.money import Money
+from common import AggregateRoot, Event
 from shared_kernel.domain.wallet import Wallet
 
 
-class EntityID:
-    value: int
-
-    @property
-    def id(self):
-        return self.value
-
-    @id.setter
-    def id(self, value: int):
-        self.value = value
+@dataclass
+class BalanceChangedEvent(Event):
+    value: float
 
 
-class Atm(EntityID):
+class Atm(AggregateRoot):
     commission_rate = 0.01
 
     def __init__(self):
+        super().__init__()
         self._money_charged: float = 0
         self._money_inside: Wallet = Wallet()
 
@@ -41,6 +35,8 @@ class Atm(EntityID):
 
         self._money_inside -= self._money_inside.allocate(amount)
         self._money_charged += self.caluculate_amount_with_commission(amount)
+
+        self.add_domain_event(BalanceChangedEvent(self._money_charged))
 
     def caluculate_amount_with_commission(self, amount):
         commission = amount * self.commission_rate
