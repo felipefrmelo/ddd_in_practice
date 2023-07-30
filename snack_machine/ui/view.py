@@ -2,6 +2,8 @@ import re
 import tkinter as tk
 from tkinter import messagebox
 from PIL import ImageTk, Image
+from shared_kernel.domain.money import *
+from shared_kernel.domain.wallet import Wallet
 from snack_machine.domain.snack import Chocolate, Gum, Soda
 from snack_machine.domain.snack_pile import SnackPile
 
@@ -199,11 +201,8 @@ def get_snack_machine(repository: SqlAlchemySnackMachineRepository):
     return snack_machine
 
 
-db_url = "sqlite:///snack_machine.db"
-
-
 def init_snacks():
-    session = SessionLocal(db_url)
+    session = SessionLocal()
     try:
         session.add_all([SnackOrm.from_domain(Chocolate),
                          SnackOrm.from_domain(Soda), SnackOrm.from_domain(Gum)])
@@ -217,13 +216,17 @@ def init_snacks():
 if __name__ == "__main__":
     init_snacks()
 
-    session = SessionLocal(db_url)
+    session = SessionLocal()
     repository = SqlAlchemySnackMachineRepository(session)
 
     snack_machine = get_snack_machine(repository)
     snack_machine.load_snack(1, SnackPile(Chocolate, 10, 3))
     snack_machine.load_snack(2, SnackPile(Soda, 10, 2))
     snack_machine.load_snack(3, SnackPile(Gum, 10, 1))
+
+    snack_machine.load_money(Wallet(Dollar(100), Cent(100), Quarter(
+        100), TenCent(100), FiveDollar(100), TwentyDollar(100)))
+    repository.save(snack_machine)
 
     snack_machine_view_model = SnackMachineViewModel(snack_machine, repository)
     app = SnackMachineApp(snack_machine_view_model)

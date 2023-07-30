@@ -25,11 +25,15 @@ class SnackMachineRepository(ABC):
     def save(self, snack_machine: SnackMachine):
         ...
 
+    @abstractmethod
+    def get_all(self):
+        ...
+
 
 Base = declarative_base()
 
 
-def SessionLocal(url):
+def SessionLocal(url="sqlite:///snack_machine.db"):
     engine = create_engine(
         url, connect_args={"check_same_thread": False}
     )
@@ -154,3 +158,7 @@ class SqlAlchemySnackMachineRepository(SnackMachineRepository):
         ]
 
         self.session.commit()
+
+    def get_all(self):
+        snack_machines = self.session.query(SnackMachineOrm).all()
+        return [s.to_domain() for s in snack_machines]

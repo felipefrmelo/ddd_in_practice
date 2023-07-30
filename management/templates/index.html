@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DDD</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <script charset="utf-8">
+
+        const unloadCash = (id) => {
+            fetch(`/snack_machine/${id}/unload_cash`, {
+                method: 'POST',
+            })
+            .then(() => {
+                console.log('Success:');
+                document.location.reload();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Head Office:</h1>
+
+          <h2>Balance: {{ balance }}</h2>
+          <h2>Cash: {{ cash }}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Snack Machines:</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for snack_machine in snack_machines %}
+              <tr>
+                <td>{{ snack_machine.id }}</td>
+                <td>{{ snack_machine.money_inside }}</td>
+                <td>
+                    <!button with action unload cash>
+                    <button type="button" class="btn btn-primary" onclick="unloadCash({{ snack_machine.id }})">Unload Cash</button>
+              </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+          <h2>ATM:</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Cash</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for atm in atms %}
+              <tr>
+                <td>{{ atm.id }}</td>
+                <td>{{ atm.money_inside }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+  </body>
+</html>

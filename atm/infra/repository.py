@@ -31,11 +31,15 @@ class AtmRepository(ABC):
     def _save(self, atm: Atm):
         raise NotImplementedError
 
+    @abstractmethod
+    def get_all(self):
+        ...
+
 
 Base = declarative_base()
 
 
-def SessionLocal(url):
+def SessionLocal(url="sqlite:///atm.db"):
     engine = create_engine(
         url, connect_args={"check_same_thread": False}
     )
@@ -110,3 +114,7 @@ class SqlAlchemyAtmRepository(AtmRepository):
         atm_orm.MoneyCharged = atm._money_charged
 
         self.session.commit()
+
+    def get_all(self):
+        atms = self.session.query(AtmOrm).all()
+        return [s.to_domain() for s in atms]

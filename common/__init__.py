@@ -44,7 +44,7 @@ class Publisher(Protocol):
 
 class RabbitMQPublisher(Publisher):
 
-    def __init__(self, connection_string: str):
+    def __init__(self, connection_string: str = "localhost"):
         self.connection_string = connection_string
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(host=self.connection_string))

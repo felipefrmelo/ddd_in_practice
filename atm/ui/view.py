@@ -132,14 +132,11 @@ def get_atm(repository: SqlAlchemyAtmRepository):
     return atm
 
 
-db_url = "sqlite:///atm.db"
-
-
 if __name__ == "__main__":
 
     pub = RabbitMQPublisher("localhost")
 
-    session = SessionLocal(db_url)
+    session = SessionLocal()
     repository = SqlAlchemyAtmRepository(session, pub)
 
     atm = get_atm(repository)

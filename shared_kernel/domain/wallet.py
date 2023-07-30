@@ -75,3 +75,6 @@ class Wallet:
     def countMoney(self, amount, money):
         return min(
             int(round((round(amount, 2) / money._multiplier), 2)), money.value)
+
+    def __repr__(self):
+        return f"Wallet({self.amount})"

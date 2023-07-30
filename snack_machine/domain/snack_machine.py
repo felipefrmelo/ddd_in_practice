@@ -77,6 +77,13 @@ class SnackMachine(EntityID):
 
         self._money_in_transaction = 0
 
+    def unload_cash(self):
+        money_to_return = self._money_inside.allocate(
+            self._money_inside.amount - self._money_in_transaction)
+        self._money_inside = self._money_inside - money_to_return
+
+        return money_to_return
+
     @ property
     def money_inside(self):
         return self._money_inside.amount
